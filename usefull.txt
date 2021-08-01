@@ -1,0 +1,3 @@
+Enable Rewrite: sudo a2enmod rewrite
+Restart Apache2: sudo service apache2 restart
+

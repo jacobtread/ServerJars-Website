@@ -1,0 +1,32 @@
+Options +FollowSymLinks
+Options -Indexes
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^documentation$ ./documentation.php
+RewriteRule ^updater$ ./updater.php
+RewriteRule ^view/(.*)$ ./view.php?type=$1
+RewriteRule ^more/(.*)$ ./more.php?type=$1
+
+RewriteRule ^api/fetchJar/(.*)/(.*)$ ./api/fetchJar.php?type=$1&version=$2
+RewriteRule ^api/fetchJar/(.*)$ ./api/fetchJar.php?type=$1
+
+RewriteRule ^api/fetchLatest/(.*)$ ./api/fetchLatest.php?type=$1
+
+RewriteRule ^api/fetchAll/(.*)/(.*)$ ./api/fetchAll.php?type=$1&max=$2
+RewriteRule ^api/fetchAll/(.*)$ ./api/fetchAll.php?type=$1
+
+RewriteRule ^api/fetchTypes/(.*)$ ./api/fetchTypes.php?type=$1
+RewriteRule ^api/fetchTypes$ ./api/fetchTypes.php
+
+
+RewriteRule ^more/(.*)$ ./more.php?type=$1
+RewriteRule ^more/(.*)$ ./more.php?type=$1
+
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+ErrorDocument 403 /error.php?code=403
+ErrorDocument 404 /error.php?code=404
